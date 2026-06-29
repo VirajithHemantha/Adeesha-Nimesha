@@ -205,7 +205,7 @@ function CountdownTimer() {
   );
 }
 
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwhWhPez0XmHXs4T7JSasP4zJ2bjuykd9av6kYKEAyipqAr9D8DIl5cXcmKrs87WnkRUw/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwpTGajMFetPnRd7-IPfA2fzyAztWbc4ELxjSZ6BscJyWxYAJzzdkyMyw5lXTC_N64V/exec";
 
 function WeddingInvitation() {
   const [guestName, setGuestName] = useState("");
