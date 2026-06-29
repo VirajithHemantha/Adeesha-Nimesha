@@ -225,7 +225,7 @@ function WeddingInvitation() {
   const audioRef = React.useRef<HTMLAudioElement | null>(null);
 
   // Form State
-  const [rsvpData, setRsvpData] = useState({ name: "", guests: "1", dietary: "" });
+  const [rsvpData, setRsvpData] = useState({ name: "", phone: "", dietary: "" });
   const [wishData, setWishData] = useState({ name: "", message: "" });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<null | "rsvp_success" | "wish_success" | "error">(null);
@@ -246,7 +246,7 @@ function WeddingInvitation() {
       // Explicit mapping of keys to Sheet Headers
       const fieldMapping: Record<string, string> = {
         name: "Name",
-        guests: "Guests",
+        phone: "Telephone Number",
         dietary: "Dietary Notes",
         message: "Message"
       };
@@ -268,7 +268,7 @@ function WeddingInvitation() {
       setSubmitStatus(`${formName}_success` as any);
 
       // Reset forms
-      if (formName === "rsvp") setRsvpData({ name: "", guests: "1", dietary: "" });
+      if (formName === "rsvp") setRsvpData({ name: "", phone: "", dietary: "" });
       else setWishData({ name: "", message: "" });
 
     } catch (error) {
@@ -707,39 +707,7 @@ function WeddingInvitation() {
                     </div>
                   </div>
 
-                  {/* Poruwa Ceremony Highlight */}
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8, delay: 0.2 }}
-                    className="mt-16 md:mt-24 pt-12 border-t border-theme-100/60 w-full max-w-[320px] md:max-w-xl flex flex-col items-center relative"
-                  >
-                    <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#FFFFFF] px-6">
-                      <Sparkles className="w-6 h-6 text-theme-400" />
-                    </div>
 
-                    <div className="space-y-4 flex flex-col items-center">
-                      <p className="text-[10px] md:text-[12px] uppercase tracking-[0.5em] text-stone-400 font-bold">Auspicious Ceremony</p>
-                      <h4 className="font-cinzel text-2xl md:text-4xl text-theme-900 tracking-[0.3em] font-bold drop-shadow-sm px-4 text-center">PORUWA CEREMONY</h4>
-
-                      <div className="flex items-center gap-6 mt-6">
-                        <div className="w-12 md:w-20 h-[1.5px] bg-gradient-to-r from-transparent to-theme-300" />
-                        <div className="flex flex-col items-center">
-                          <p className="font-cinzel text-xl md:text-2xl text-theme-700 font-bold tracking-[0.2em]">06:30 PM</p>
-                          <p className="text-[8px] md:text-[9px] uppercase tracking-[0.3em] text-theme-400 font-bold mt-1">Onwards</p>
-                        </div>
-                        <div className="w-12 md:w-20 h-[1.5px] bg-gradient-to-l from-transparent to-theme-300" />
-                      </div>
-                    </div>
-
-                    {/* Decorative element below */}
-                    <div className="mt-10 flex items-center gap-2 opacity-30">
-                      <div className="w-1.5 h-1.5 rounded-full bg-theme-300" />
-                      <div className="w-1.5 h-1.5 rounded-full bg-theme-400" />
-                      <div className="w-1.5 h-1.5 rounded-full bg-theme-300" />
-                    </div>
-                  </motion.div>
                 </motion.div>
               </div>
             </section>
@@ -895,8 +863,8 @@ function WeddingInvitation() {
                     We would be absolutely thrilled to celebrate with you. Kindly respond by the end of July.
                   </p>
                   <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-12 text-stone-200 mb-16 text-xs md:text-sm uppercase tracking-widest font-bold bg-white/5 py-4 px-8 rounded-full border border-white/10">
-                    <p>Nimesha: 076 6548801</p>
-                    <p>Adeesha: 075 8612558</p>
+
+                    <p>Adeesha: 070 2786160</p>
                   </div>
 
                   {/* Premium RSVP Form */}
@@ -915,23 +883,15 @@ function WeddingInvitation() {
                       </div>
 
                       <div className="space-y-3">
-                        <label className="text-[8px] md:text-[10px] uppercase tracking-[0.3em] font-bold text-theme-200 ml-2">Guests</label>
-                        <div className="relative">
-                          <select
-                            value={rsvpData.guests}
-                            onChange={(e) => setRsvpData({ ...rsvpData, guests: e.target.value })}
-                            className="w-full bg-transparent border-b border-white/20 px-2 py-3 text-white focus:outline-none focus:border-theme-300 transition-colors font-cinzel text-lg md:text-xl tracking-wide appearance-none cursor-pointer"
-                          >
-                            <option value="1" className="bg-[#18181B] text-white">1 Guest (Just Me)</option>
-                            <option value="2" className="bg-[#18181B] text-white">2 Guests</option>
-                            <option value="3" className="bg-[#18181B] text-white">3 Guests</option>
-                            <option value="4" className="bg-[#18181B] text-white">4 Guests</option>
-                            <option value="0" className="bg-[#18181B] text-theme-300">Regretfully Decline</option>
-                          </select>
-                          <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
-                            <div className="w-2 h-2 border-r border-b border-theme-300 rotate-45 transform -translate-y-[25%]" />
-                          </div>
-                        </div>
+                        <label className="text-[8px] md:text-[10px] uppercase tracking-[0.3em] font-bold text-theme-200 ml-2">Telephone Number</label>
+                        <input
+                          type="tel"
+                          required
+                          value={rsvpData.phone}
+                          onChange={(e) => setRsvpData({ ...rsvpData, phone: e.target.value })}
+                          placeholder="e.g. 070 1234567"
+                          className="w-full bg-transparent border-b border-white/20 px-2 py-3 text-white placeholder:text-white/30 focus:outline-none focus:border-theme-300 transition-colors font-cinzel text-lg md:text-xl tracking-wide"
+                        />
                       </div>
 
                       <div className="space-y-3">
@@ -982,7 +942,7 @@ function WeddingInvitation() {
                     <div className="h-px w-24 bg-gradient-to-r from-transparent via-theme-400 to-transparent mb-8" />
 
                     <p className="text-stone-500 text-sm md:text-lg leading-relaxed max-w-xl mx-auto mb-16 font-light tracking-wide px-4">
-                      Your presence at our wedding is the greatest gift of all. However, if you wish to honor us with a message, we would be delighted to read it!
+                      Your presence at our homecoming is the greatest gift of all. However, if you wish to honor us with a message, we would be delighted to read it!
                     </p>
 
                     {/* Premium Wishing Form */}
@@ -1143,7 +1103,7 @@ function AdminPage() {
     <div className="min-h-screen bg-[#FDFBF7] flex items-center justify-center p-4 font-montserrat w-full absolute inset-0 z-[1000] overflow-y-auto">
       <div className="max-w-xl w-full bg-white p-8 rounded-2xl shadow-[0_20px_50px_-10px_rgba(0,0,0,0.05)] border border-theme-200">
         <h1 className="text-3xl font-cinzel text-theme-900 mb-8 text-center font-bold">Link Generator</h1>
-        
+
         <div className="space-y-6">
           <div className="space-y-2">
             <label className="text-xs uppercase tracking-widest text-stone-500 font-bold">Prefix</label>
@@ -1183,7 +1143,7 @@ function AdminPage() {
               <div className="p-4 bg-stone-50 rounded-lg break-all text-sm text-stone-600 font-medium">
                 {generatedLink}
               </div>
-              
+
               <div className="flex gap-4">
                 <button
                   onClick={copyLink}

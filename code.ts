@@ -33,11 +33,11 @@ function handleResponse(e) {
 
 function handleRsvp(params) {
   const sheetName = 'RSVP';
-  const headers = ['Timestamp', 'Name', 'Guests', 'Dietary Notes'];
+  const headers = ['Timestamp', 'Name', 'Telephone Number', 'Dietary Notes'];
   const rowData = [
     new Date(),
     params['Name'] || '',
-    params['Guests'] || '',
+    params['Telephone Number'] || '',
     params['Dietary Notes'] || ''
   ];
   
@@ -109,7 +109,7 @@ function setupSheets() {
   // Setup RSVP sheet
   if (!doc.getSheetByName('RSVP')) {
     const rsvpSheet = doc.insertSheet('RSVP');
-    const rsvpHeaders = ['Timestamp', 'Name', 'Guests', 'Dietary Notes'];
+    const rsvpHeaders = ['Timestamp', 'Name', 'Telephone Number', 'Dietary Notes'];
     rsvpSheet.appendRow(rsvpHeaders);
     rsvpSheet.getRange('A1:D1').setFontWeight('bold').setBackground('#F3F4F6');
     rsvpSheet.setFrozenRows(1);
