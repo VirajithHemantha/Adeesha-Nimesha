@@ -246,7 +246,7 @@ function WeddingInvitation() {
       // Explicit mapping of keys to Sheet Headers
       const fieldMapping: Record<string, string> = {
         name: "Name",
-        phone: "Telephone Number",
+        phone: "Phone",
         dietary: "Dietary Notes",
         message: "Message"
       };
