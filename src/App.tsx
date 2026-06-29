@@ -863,7 +863,7 @@ function WeddingInvitation() {
                     We would be absolutely thrilled to celebrate with you. Kindly respond by the end of July.
                   </p>
                   <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-12 text-stone-200 mb-16 text-xs md:text-sm uppercase tracking-widest font-bold bg-white/5 py-4 px-8 rounded-full border border-white/10">
-
+                    <p>Nimesha: 072 651 9578</p>
                     <p>Adeesha: 070 2786160</p>
                   </div>
 
